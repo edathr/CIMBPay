@@ -44,20 +44,5 @@ public class Registration extends AppCompatActivity {
                 startActivity(new Intent(Registration.this, RegisterGesture.class));
             }
         });
-
-        lib = GestureLibraries.fromRawResource(this, R.raw.gesture);
-        if (!lib.load()) {
-            finish();
-        }
-        final GestureOverlayView gesture = findViewById(R.id.gesture);
-        gesture.addOnGesturePerformedListener(new GestureOverlayView.OnGesturePerformedListener() {
-            @Override
-            public void onGesturePerformed(GestureOverlayView gestureOverlayView, Gesture gesture) {
-                ArrayList<Prediction> predictionArrayList = lib.recognize(gesture);
-                for (Prediction prediction: predictionArrayList) {
-                    if (prediction.score > 1.0) {
-                        //txtResult.setText(prediction.name);
-                        //txtResult.setText("Success");
-                        Toast.makeText(VerifyGesture.this, "Successfully verified!", Toast.LENGTH_LONG).show();
     }
 }
